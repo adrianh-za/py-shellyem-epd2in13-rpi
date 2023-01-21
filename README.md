@@ -37,6 +37,12 @@ Once rebooted
 8) run `main.py` and `main-touch.py`
 9) ctrl-c to quit
 
+To run the script upon reboot
+
+ 1. `sudo cronjob -e`
+ 2. Add the following line at the bottom of the file.	*Note the location could be different on your RPi.  Also note the & at the end which tells the RPi to run the script in the background.*
+    `@reboot sleep 20; sudo python3 /home/pi/github.com/adrianh-za/py-shellyem-epd2in13-rpi/main.py &`
+
 
 ## Notes
 
