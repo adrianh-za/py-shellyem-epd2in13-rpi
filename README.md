@@ -31,11 +31,12 @@ Get the Pi ready
 
 Once rebooted
 
-5) `sudo apt install python3 python3-pip python3-pil python3-smbus`  (Install Python and support libraries)
-6) `git clone https://github.com/adrianh-za/py-shellyem-epd2in13-rpi` (Download this module)
-7) `cd py-shellyem-epd2in13-rpi` (Browse to this module's location.  Could be located elsewhere)
-8) run `main.py` and `main-touch.py`
-9) ctrl-c to quit
+5) `sudo apt install python3 python3-pip python3-smbus libopenjp2-tools`  (Install Python and support libraries)
+6) `sudo pip3 install Pillow requests spidev` (Install required imports of app)
+7) `git clone https://github.com/adrianh-za/py-shellyem-epd2in13-rpi` (Download this module)
+8) `cd py-shellyem-epd2in13-rpi` (Browse to this module's location.  Could be located elsewhere)
+9) run `main.py` and `main-touch.py`
+10) ctrl-c to quit
 
 To run the script upon reboot
 
@@ -52,6 +53,8 @@ To run the script upon reboot
 
 - The module does a full display refresh after every 100 partial refresh.  Due to using partial refreshes, there are when some of the numbers
 are a little garbled.  This is expected and will clear up after a few refreshes.
+
+- Both I2C and SPI need to be enabled on the RPi.  Run `sudo raspi-config` and navgiate to Interface Options and enable both I2C and SPI.
 
 - You may need to change the I2C address in the module when running `main-touch.py`.  To check which I2C address the eInk display is using on your RPi,
 install `sudo apt install i2c-tools` and then run `i2cdetect -y 1` to check what address is being used.  Then check the `main-touch.py` file and look for `gt = gt1151.GT1151(0x14)` and replace in input argument with your address.
